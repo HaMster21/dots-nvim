@@ -21,3 +21,7 @@ set list
 highlight NonText ctermfg=DarkBlue
 highlight SpecialKey ctermfg=DarkBlue
 set listchars=tab:▸\ ,eol:¬
+
+" Go Coding
+au BufWritePre *.go :%!gofmt
+au BufWritePost *_test.go :!go test
