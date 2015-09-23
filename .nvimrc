@@ -23,8 +23,8 @@ highlight SpecialKey ctermfg=DarkBlue
 set listchars=tab:▸\ ,eol:¬
 
 let mapleader = " "
-map <Leader>j cnext
-map <Leader>k cprev
+map <Leader>j :cnext <CR>
+map <Leader>k :cprev <CR>
 
 augroup Tweaks
 	au SwapExists ~/* :let v:swapchoice='R'
