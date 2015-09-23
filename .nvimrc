@@ -30,10 +30,9 @@ augroup Tweaks
 	au SwapExists ~/* :let v:swapchoice='R'
 augroup END
 
-function! Gofmt ()
-	let cursorpos = getpos('.')
-	cexpr system("gofmt " . expand('%') . " 1> /dev/null")
-	call setpos('.', cursorpos)
+function Gofmt ()
+	:cexpr []
+	:cexpr system("gofmt " . expand('%') . " 1> /dev/null")
 endfunction
 
 augroup Golang
