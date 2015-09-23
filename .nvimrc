@@ -22,6 +22,23 @@ highlight NonText ctermfg=DarkBlue
 highlight SpecialKey ctermfg=DarkBlue
 set listchars=tab:▸\ ,eol:¬
 
-" Go Coding
-au BufWritePre *.go :%!gofmt
-au BufWritePost *_test.go :!go test
+let mapleader = " "
+map <Leader>j cnext
+map <Leader>k cprev
+
+augroup Tweaks
+	au SwapExists ~/* :let v:swapchoice='R'
+augroup END
+
+function! Gofmt ()
+	let cursorpos = getpos('.')
+	cexpr system("gofmt " . expand('%') . " 1> /dev/null")
+	call setpos('.', cursorpos)
+endfunction
+
+augroup Golang
+	au!
+
+	au InsertLeave *.go silent call Gofmt()
+	au BufWritePost,FileWritePost *_test.go !go test
+augroup END
