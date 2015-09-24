@@ -32,12 +32,11 @@ augroup END
 
 function Gofmt ()
 	:cexpr []
-	:cexpr system("gofmt " . expand('%') . " 1> /dev/null")
+	:cexpr system("gofmt " . expand('%'))
 endfunction
 
 augroup Golang
 	au!
-
 	au InsertLeave *.go silent call Gofmt()
 	au BufWritePost,FileWritePost *_test.go !go test
 augroup END
